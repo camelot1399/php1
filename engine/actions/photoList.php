@@ -14,11 +14,8 @@ if(!file_exists($cachePath . $cacheName)){
 }
 
 echo "get from cache <br>";
-
 $photos = file_get_contents($cachePath . $cacheName);
-
 $new2 = json_decode($photos, TRUE);
-
 foreach($new2 as $value) {
     $photoList[] = ['url' => array_values($value)[1], 'name' => array_values($value)[0]];
 }
@@ -35,4 +32,4 @@ while (false !== ($fileName = readdir($dh))) {
         $files2[] = $fileName;
 }
 
-$content = require(TPL_PATH . 'photoList.php');
+// $content = require(TPL_PATH . 'photoList.php');

@@ -4,24 +4,21 @@ define('DOCROOT', __DIR__ . '/../');
 define('TPL_PATH', DOCROOT . 'templates/');
 define('UPLOAD_PATH', DOCROOT . 'data/uploaded/');
 define('HELPER_PATH', DOCROOT . 'engine/helpers/');
+define('ACTIONS_PATH', DOCROOT . 'engine/actions/');
 
 require DOCROOT . '/engine/helpers/helper.php';
 
 $title = 'My app';
 
-$content = require(DOCROOT . '/config/database.php');
+// $content = require(DOCROOT . '/config/database.php');
 
 // var_dump($content);
 // die;
 
-$content = require(TPL_PATH . 'form.php');
-$content = require(HELPER_PATH . 'photoList.php');
+// $content = require(TPL_PATH . 'form.php');
+// $content = require(HELPER_PATH . 'photoList.php');
 // require('./log.txt');
 require(TPL_PATH . 'layout.php');
-
-if (isset($_POST[$__FILES])) {
-	echo 'файл';
-}
 
 // echo "<pre>";
 // var_dump($_SERVER['REQUEST_URI']);
@@ -44,7 +41,5 @@ if(!file_exists($filePath)){
 	exit;
 }
 require($filePath);
-
-
 
 // ?>

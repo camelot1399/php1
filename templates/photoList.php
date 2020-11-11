@@ -1,3 +1,7 @@
+<?php 
+require(ACTIONS_PATH . 'photoList.php');
+?>
+
 <div class="photoBox">
 
   <br>
@@ -53,8 +57,6 @@
     <?php endforeach ?>   
   </div>
 
-
 </div>
-
 
 <?php createPhotoList(); ?>
