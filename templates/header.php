@@ -1,3 +1,3 @@
 <header style="height: 50px; background: #cecece">
-	header
+	<?= $title; ?>
 </header>

@@ -1,0 +1,1 @@
+<h1><?= isset($code) ? $code . ' ' : '' ?><?= $message ?></h1>
