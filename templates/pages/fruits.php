@@ -4,10 +4,10 @@
 <div class="photoBox">
 
   <br>
-  <form method="post" enctype="multipart/form-data" action="index.php">
-    <input type="file" name="file">
+  <form method="post" enctype="multipart/form-data" action="/fruits">
+    <input type="file" name="uploadedFile">
     <hr>
-    <button type="submit">Upload</button>
+    <button type="submit" name="uploadBtn" value="Upload">Upload</button>
   </form>
   <br>
 

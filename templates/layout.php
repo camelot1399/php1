@@ -7,6 +7,7 @@
 </head>
 <body>
 	<?php require( TPL_PATH . './header.php'); ?>
+	<?php require( TPL_PATH . './nav.php'); ?>
 	<?= $content ?>
 </body>
 </html>

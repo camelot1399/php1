@@ -3,6 +3,7 @@
 define('DOCROOT', __DIR__ . '/../');
 define('TPL_PATH', DOCROOT . 'templates/');
 define('UPLOAD_PATH', DOCROOT . 'data/uploaded/');
+define('UPLOAD_IMG_FRUITS_PATH', 'img/photoList/');
 define('HELPER_PATH', DOCROOT . 'engine/helpers/');
 define('ACTIONS_PATH', DOCROOT . 'engine/actions/');
 
