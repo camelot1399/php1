@@ -22,6 +22,8 @@ if(isset($_POST['username']) && $_POST['username']) {
 	header('Location: http://' . $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI']);
 }
 
+// $content = view('forms/login', ['action' => '/login/']);
+
 // require(TPL_PATH . 'form.php');
 
 require(TPL_PATH . 'photoList.php');
