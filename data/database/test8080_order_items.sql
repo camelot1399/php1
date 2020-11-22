@@ -16,29 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `test8080_feedback`
+-- Table structure for table `order_items`
 --
 
-DROP TABLE IF EXISTS `test8080_feedback`;
+DROP TABLE IF EXISTS `order_items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `test8080_feedback` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `idNews` int(10) unsigned DEFAULT NULL,
-  `content` text NOT NULL,
-  `userName` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+CREATE TABLE `order_items` (
+  `order_id` int(11) NOT NULL,
+  `fruit_id` int(11) NOT NULL,
+  `price` decimal(22,2) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `sale` int(11) NOT NULL DEFAULT '0',
+  `amount` decimal(22,2) NOT NULL,
+  PRIMARY KEY (`order_id`,`fruit_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `test8080_feedback`
+-- Dumping data for table `order_items`
 --
 
-LOCK TABLES `test8080_feedback` WRITE;
-/*!40000 ALTER TABLE `test8080_feedback` DISABLE KEYS */;
-INSERT INTO `test8080_feedback` VALUES (9,3,'3453454','454'),(10,1,'Отзыв о короновирусе','Михаил');
-/*!40000 ALTER TABLE `test8080_feedback` ENABLE KEYS */;
+LOCK TABLES `order_items` WRITE;
+/*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-23  0:38:27
+-- Dump completed on 2020-11-23  0:38:28

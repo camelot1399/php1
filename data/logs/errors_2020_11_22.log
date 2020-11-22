@@ -1,0 +1,2 @@
+Table 'test8080.fruits' doesn't exist in (select * from fruits;)
+Table 'test8080.fruits' doesn't exist in (select * from fruits;)

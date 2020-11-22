@@ -1,52 +1,40 @@
 <?php
 $fruits = isset($fruits) ? $fruits : [];
 
-// echo '<pre>';
-// var_dump($fruits);
+$product_params = [
+    ["title" => "Название товара", "name" => "productName", "id" => "productName"],
+    ["title" => "Белки", "name" => "protein", "id" => "protein"],
+    ["title" => "Жиры", "name" => "fat", "id" => "fat"],
+    ["title" => "Углеводы", "name" => "carb", "id" => "carb"],
+    ["title" => "Ккал", "name" => "ccal", "id" => "ccal"],
+];
 ?>
-
 <form method="post" enctype="multipart/form-data"> 
 
-    <label for="productName">Продукт <i class="required">*</i></label>
-    <input type="text" name="productName" id="productName" value="<?= array_get($fruits, 'productName'); ?>">
-    <?php if (isset($errors['productName'])): ?>
-        <i class="required"><?= $errors['productName']; ?></i>
-    <?php endif ?>
-    <br>
-    <br>
 
-    <label for="protein">Белки <i class="required">*</i></label>
-    <input type="text" name="protein" id="protein" value="<?= array_get($fruits, 'protein'); ?>">
-    <?php if (isset($errors['protein'])): ?>
-        <i class="required"><?= $errors['protein']; ?></i>
-    <?php endif ?>
-    <br>
-    <br>
+    <?php foreach($product_params as $item): ?>
+        <div class="input-group mb-3">
 
-    <label for="fat">Жиры <i class="required">*</i></label>
-    <input type="text" name="fat" id="fat" value="<?= array_get($fruits, 'fat'); ?>">
-    <?php if (isset($errors['fat'])): ?>
-        <i class="required"><?= $errors['fat']; ?></i>
-    <?php endif ?>
-    <br>
-    <br>
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><?= $item['title'] ?>: <i class="required">*</i></span>
+        </div>
+        <input 
+        type="text" 
+        class="form-control" 
+        placeholder="<?= $item['title'] ?>" 
+        aria-label="<?= $item['title'] ?>" 
+        aria-describedby="basic-addon1" 
+        name="<?= $item['name'] ?>" 
+        id="<?= $item['name'] ?>" 
+        value="<?= array_get($fruits, $item['name']); ?>"
+        >
 
-    <label for="carb">Углеводы <i class="required">*</i></label>
-    <input type="text" name="carb" id="carb" value="<?= array_get($fruits, 'carb'); ?>">
-    <?php if (isset($errors['carb'])): ?>
-        <i class="required"><?= $errors['carb']; ?></i>
-    <?php endif ?>
-    <br>
-    <br>
+        <?php if (isset($errors[$item['name']])): ?>
+            <i class="required"><?= $errors[$item['name']]; ?></i>
+        <?php endif ?>
 
-    <label for="ccal">Ккал <i class="required">*</i></label>
-    <input type="text" name="ccal" id="ccal" value="<?= array_get($fruits, 'ccal'); ?>">
-    <?php if (isset($errors['ccal'])): ?>
-        <i class="required"><?= $errors['ccal']; ?></i>
-    <?php endif ?>
-
-    <br>
-    <br>
+        </div>
+    <?php endforeach; ?>
 
     <label for="uploadedFile">Фотография продукта</label>
     <br>
@@ -54,11 +42,14 @@ $fruits = isset($fruits) ? $fruits : [];
     <img src="/img/photoList/<?= array_get($fruits, 'img'); ?>" alt="" class="photoList__img" width="200">
     <br>
     <br>
+    <label for="currentImgFile">Текущий файл</label>
     <input type="text" name="currentImgFile" id="currentImgFile" value="<?= array_get($fruits, 'img'); ?>">
-    <input type="file" name="uploadedFile">
+    <br>
+    <input type="file" name="uploadedFile" id="uploadedFile">
     <br>
     <br>
-    <button type="submit" name="uploadBtn" value="Upload">Отправить</button>
-    <button type="submit"><a href="/fruits/?id=<?= array_get($fruits, 'id'); ?>">Отмена</a></button>
+    <button type="submit" class="btn btn-outline-primary" name="uploadBtn" value="Upload">Отправить</button>
+    <button type="submit"class="btn btn-outline-danger" ><a href="/fruits/?id=<?= array_get($fruits, 'id'); ?>">Отмена</a></button>
 
 </form>
+

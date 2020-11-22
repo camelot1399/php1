@@ -16,29 +16,40 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `test8080_feedback`
+-- Table structure for table `goods`
 --
 
-DROP TABLE IF EXISTS `test8080_feedback`;
+DROP TABLE IF EXISTS `goods`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `test8080_feedback` (
+CREATE TABLE `goods` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `idNews` int(10) unsigned DEFAULT NULL,
-  `content` text NOT NULL,
-  `userName` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `productName` varchar(45) DEFAULT NULL,
+  `img` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `content` text,
+  `protein` varchar(45) DEFAULT NULL,
+  `fat` varchar(45) DEFAULT NULL,
+  `carb` varchar(45) DEFAULT NULL,
+  `ccal` varchar(45) DEFAULT NULL,
+  `description` text,
+  `qty` int(11) DEFAULT NULL,
+  `sale` int(11) DEFAULT NULL,
+  `status` enum('active','deleted') DEFAULT 'active',
+  `category_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `fruitscol_UNIQUE` (`qty`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `test8080_feedback`
+-- Dumping data for table `goods`
 --
 
-LOCK TABLES `test8080_feedback` WRITE;
-/*!40000 ALTER TABLE `test8080_feedback` DISABLE KEYS */;
-INSERT INTO `test8080_feedback` VALUES (9,3,'3453454','454'),(10,1,'Отзыв о короновирусе','Михаил');
-/*!40000 ALTER TABLE `test8080_feedback` ENABLE KEYS */;
+LOCK TABLES `goods` WRITE;
+/*!40000 ALTER TABLE `goods` DISABLE KEYS */;
+INSERT INTO `goods` VALUES (3,'Морковь','morkov01.png','2020-11-12 10:23:31',NULL,'9090','10','90','10',NULL,NULL,NULL,'active',1),(15,'Стручковая фасоль','b94fbe41b8a4d19e647455cbc61f6772.','2020-11-15 08:25:02',NULL,'10','10','10','10',NULL,NULL,NULL,'active',1),(16,'Авокадо','e23ae092277e8931728d0e2fafe1b9da.jpg','2020-11-15 08:38:20',NULL,'44','10','98','444',NULL,NULL,NULL,'active',1),(17,'Потато','3cd7d649d892e04dfe8dd7c72e8cf0e3.jpg','2020-11-21 21:24:49',NULL,'43','43','43','43',NULL,NULL,NULL,'active',1);
+/*!40000 ALTER TABLE `goods` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

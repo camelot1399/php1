@@ -4,7 +4,7 @@ $dbConfig = require(DOCROOT . './config/database.php');
 
 ob_start();
 
-$connection = mysqli_connect(
+$dbConnection = mysqli_connect(
 	$dbConfig['host'], 
 	$dbConfig['username'],
 	$dbConfig['password'], 
@@ -14,7 +14,7 @@ $connection = mysqli_connect(
 
 ob_end_clean();
 
-if(!$connection){
+if(!$dbConnection){
 	writeLog(mysqli_connect_errno() . ":" . mysqli_connect_error());
 	print view('pages/error', ['message' => 'Нет соединения c БД!']);
 	exit;
@@ -24,12 +24,12 @@ if(!function_exists('dbGetAll')) {
 
 	function dbGetAll(string $sql): array {
 
-		$connection = $GLOBALS['connection'];
+		$dbConnection = $GLOBALS['dbConnection'];
 
-		$res = mysqli_query($connection, $sql);
+		$res = mysqli_query($dbConnection, $sql);
 
 		if(!$res){
-			writeLog(mysqli_error($connection) . ' in (' . $sql . ')');
+			writeLog(mysqli_error($dbConnection) . ' in (' . $sql . ')');
 			return [];
 		}
 
@@ -48,12 +48,12 @@ if(!function_exists('dbGetRow')) {
 
 	function dbGetRow(string $sql): array {
 
-		$connection = $GLOBALS['connection'];
+		$dbConnection = $GLOBALS['dbConnection'];
 
-		$res = mysqli_query($connection, $sql);
+		$res = mysqli_query($dbConnection, $sql);
 
 		if(!$res){
-			writeLog(mysqli_error($connection) . ' in (' . $sql . ')');
+			writeLog(mysqli_error($dbConnection) . ' in (' . $sql . ')');
 			return [];
 		}
 
@@ -68,8 +68,25 @@ if(!function_exists('dbEscape')) {
 
 	function dbEscape ($val){
 
-		$connection = $GLOBALS['connection'];
+		$dbConnection = $GLOBALS['dbConnection'];
 
-		return mysqli_real_escape_string($connection, (string)htmlspecialchars(strip_tags($val)));
+		return mysqli_real_escape_string($dbConnection, htmlspecialchars(strip_tags((string)$val)));
+	}
+}
+
+if(!function_exists('dbQuery')) {
+
+	function dbQuery (string $sql){
+
+		$dbConnection = $GLOBALS['dbConnection'];
+
+		$res = mysqli_query($dbConnection, $sql);
+
+		if(!$res){
+			writeLog(mysqli_error($dbConnection) . ' in (' . $sql . ')');
+			return null;
+		}
+
+		return $res;
 	}
 }

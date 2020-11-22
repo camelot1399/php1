@@ -16,29 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `test8080_feedback`
+-- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `test8080_feedback`;
+DROP TABLE IF EXISTS `categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `test8080_feedback` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `idNews` int(10) unsigned DEFAULT NULL,
-  `content` text NOT NULL,
-  `userName` varchar(45) DEFAULT NULL,
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` enum('active','deleted') NOT NULL DEFAULT 'active',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `test8080_feedback`
+-- Dumping data for table `categories`
 --
 
-LOCK TABLES `test8080_feedback` WRITE;
-/*!40000 ALTER TABLE `test8080_feedback` DISABLE KEYS */;
-INSERT INTO `test8080_feedback` VALUES (9,3,'3453454','454'),(10,1,'Отзыв о короновирусе','Михаил');
-/*!40000 ALTER TABLE `test8080_feedback` ENABLE KEYS */;
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,'Овощи фрукты','2020-11-22 10:57:57','active'),(2,'Колбасы','2020-11-22 10:58:11','active'),(3,'Бакалея','2020-11-22 10:58:30','active');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-23  0:38:27
+-- Dump completed on 2020-11-23  0:38:28

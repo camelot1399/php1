@@ -16,29 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `test8080_feedback`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `test8080_feedback`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `test8080_feedback` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `idNews` int(10) unsigned DEFAULT NULL,
-  `content` text NOT NULL,
-  `userName` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `visited_at` timestamp NULL DEFAULT NULL,
+  `auth_key` varchar(255) DEFAULT NULL,
+  `admin` varchar(45) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `login_UNIQUE` (`login`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `test8080_feedback`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `test8080_feedback` WRITE;
-/*!40000 ALTER TABLE `test8080_feedback` DISABLE KEYS */;
-INSERT INTO `test8080_feedback` VALUES (9,3,'3453454','454'),(10,1,'Отзыв о короновирусе','Михаил');
-/*!40000 ALTER TABLE `test8080_feedback` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (16,'test','$2y$10$2epdbmMCRsJ1LS8peN6x2eh3lo4greABe9mSm7cgreCI7mBTqH9LK','test@test.ru','2020-11-21 11:58:58',NULL,'1234','1'),(17,'test2','$2y$10$8XtMuLOu/gllCJHmScE7JO4wIejqCHmTg9e2Vl9BSN547aO3Rxds.','test2@sds.ru','2020-11-22 13:45:07',NULL,NULL,'0');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

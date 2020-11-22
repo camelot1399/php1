@@ -5,8 +5,9 @@
 
 .photoList {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .photoList__item {

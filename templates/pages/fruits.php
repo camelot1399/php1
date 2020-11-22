@@ -1,16 +1,34 @@
-<button><a href="/fruits/?action=create">Добавить</a></button>
+<button type="button" class="btn btn-outline-primary"><a href="/fruits/?action=create">Добавить</a></button>
 
-
+<button type="button" class="btn btn-outline-primary"><a href="/basket">Добавить</a></button>
 <div class="photoBox">
 
   <div class="photoList">
 
-  	<?php foreach ($fruits as $item): ?>
+	  <?php foreach ($fruits as $item): ?>
+		
+		
 		<div class="photoList__item">
 			<a href="/fruits/?id=<?= $item['id']; ?>">
-				<img src="/img/photoList/<?= $item['img']; ?>" alt="" class="photoList__img" width="200">
-			</a>
-			<div class="photoList__name"><?= $item['productName']; ?></div>
+				<div class="card" style="width: 18rem;">
+				<img class="card-img-top" src="/img/photoList/<?= $item['img']; ?>" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title"><?= $item['productName']; ?></h5>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<br>
+					<?php 
+					if ((isset($_SESSION['user']['admin'])) && ( (int)$_SESSION['user']['admin'] === 1)): ?>
+					<button type="button" class="btn btn-outline-primary"><a href="/fruits/?id=<?= $item['id']; ?>&action=edit">Редактировать</a></button>
+					<?php endif;?>
+					</a>
+					
+					<button type="button" data-id="<?= $item['id']; ?>" id="btnItem_<?= $item['id']; ?>" class="btn btn-info jsAddToBasket">Купить</button>
+					<button type="button" data-id="<?= $item['id']; ?>" id="btnItem_<?= $item['id']; ?>" class="btn btn-info">
+						<a href="/basket?id=3">Купить 2</a>
+					</button>
+				</div>
+			</div>
+			
 		</div>
 	<?php endforeach; ?>
 

@@ -1,13 +1,17 @@
 <?php
 
 if (is_numeric(array_get($_GET, 'id')) && array_get($_GET, 'action') === 'edit') {
+
+	if ((!array_get($_SESSION, 'user'))) {
+		abort(405);
+	}
+	
 	$item = dbGetRow('select * from test8080 where id = '. (int)$_GET['id']  .';');
 
 	if(!$item){
 		abort(404);
 	}
 
-	// var_dump($_POST);
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		
 		$errors = [];
@@ -46,11 +50,11 @@ if (is_numeric(array_get($_GET, 'id')) && array_get($_GET, 'action') === 'edit')
 		
 		WHERE `id` = {$_GET['id']} ";
 
-		$res = mysqli_query($connection, $sql_query);
+		$res = mysqli_query($dbConnection, $sql_query);
 		if ($res) {
 			header('Location: http://' . $_SERVER['HTTP_HOST']. '/news/');
 		} else {
-			var_dump(mysqli_error( ($connection), $sql_query) );
+			var_dump(mysqli_error( ($dbConnection), $sql_query) );
 
 		}
 
