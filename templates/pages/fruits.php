@@ -1,6 +1,8 @@
 <button type="button" class="btn btn-outline-primary"><a href="/fruits/?action=create">Добавить</a></button>
 
-<button type="button" class="btn btn-outline-primary"><a href="/basket">Добавить</a></button>
+<button type="button" class="btn btn-default">
+	<a href="/basket">Корзина (<span class="basketCount"><?= count((array)array_get($_SESSION, 'basket')) ?></span>)</a>
+</button>
 <div class="photoBox">
 
   <div class="photoList">
@@ -23,9 +25,6 @@
 					</a>
 					
 					<button type="button" data-id="<?= $item['id']; ?>" id="btnItem_<?= $item['id']; ?>" class="btn btn-info jsAddToBasket">Купить</button>
-					<button type="button" data-id="<?= $item['id']; ?>" id="btnItem_<?= $item['id']; ?>" class="btn btn-info">
-						<a href="/basket?id=3">Купить 2</a>
-					</button>
 				</div>
 			</div>
 			

@@ -13,8 +13,8 @@ define('MODEL_PATH', DOCROOT . 'data/models/');
 require DOCROOT . '/engine/helpers/helper.php';
 require DOCROOT . '/engine/db.php'; 
 
-setcookie("test", "/", 60*60*24, "/", array_get($_SERVER, 'HTTP_HOST'), 1);
-
+// setcookie("test", "/", 60*60*24, "/", array_get($_SERVER, 'HTTP_HOST'), 1);
+session_set_cookie_params(60 * 60 * 24, '/', array_get($_SERVER, 'HTTP_HOST'), false, true);
 session_start();
 
 // var_dump($_SESSION);

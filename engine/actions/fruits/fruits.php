@@ -6,7 +6,6 @@ require(FRUITS . '/photo_upload.php');
 require(FRUITS . '/create.php');
 require(FRUITS . '/edit.php');
 
-// var_dump($_SESSION);
 if(is_numeric(array_get($_GET, 'id'))){
 
 	$item = dbGetRow('select * from goods where id = '. (int)$_GET['id']  .';');
